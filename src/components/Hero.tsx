@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 
 
 const videoMap = {
-  sya: '/video/sya.mp4',
-  knight: '/video/knight.mp4',
-  blushe: '/video/blushe.mp4',
-  coldmark: '/video/coldmark.mp4',
-  glow: '/video/glow.mp4',
+  sya: '/video/sya (1).mp4',
+  knight: '/video/knight (1).mp4',
+  blushe: '/video/blushe (1).mp4',
+  coldmark: '/video/coldmark (1).mp4',
+  glow: '/video/glow (1).mp4',
 };
 
 const videoPoster = {
@@ -42,7 +42,11 @@ const Hero = () => {
   };
   const handlePosterChange = (newPoster: string) => {
     if (poster === newPoster) return;
-    setPoster(newPoster);
+    setFade(true);
+    setTimeout(() => {
+      setPoster(newPoster);
+      setFade(false);
+    }, 600); // duration matches fade-out
   };
 
   return (
