@@ -9,12 +9,13 @@ interface ParallaxImgProps {
     src: string;
     alt?: string;
     poster?: string;
+    className?: string;
     type?: 'image' | 'video'; // 'image' (default), 'video', or both
     showImage?: boolean;
     showVideo?: boolean;
 }
 
-const ParallaxImg = ({ src, alt = '', poster='', type = 'image', showImage = true, showVideo = false }: ParallaxImgProps) => {
+const ParallaxImg = ({ src, alt = '', poster='', className = '', type = 'image', showImage = true, showVideo = false }: ParallaxImgProps) => {
         const mediaRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
         const bounds = useRef<any>(null);
         const currentTranslateY = useRef(0);
@@ -71,6 +72,7 @@ useLenis(({scroll})=>{
         <>
             {(type === 'image' || showImage) && (
                 <img
+                    className={className}
                     ref={mediaRef as React.RefObject<HTMLImageElement>}
                     src={src}
                     alt={alt}

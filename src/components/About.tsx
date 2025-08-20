@@ -1,6 +1,9 @@
 'use client';
 import ParallaxImg from '@/app/parallaxImg'
+import { Playfair_Display } from 'next/font/google';
 import React, { useState } from 'react'
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 const GOOGLE_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbxyTIo-1ZG4AoV0Ixp4FEENBxqe-80JQA48Vl56aTeaMZJV0b53sVo2BNkaAs26BklNcg/exec"; 
@@ -76,12 +79,12 @@ const About = () => {
 
   return (
     <div className="about">
-      <div className="col intro columns-2">
+      <div className="col intro columns-2 text-[#121212]">
         <form
           onSubmit={handleSubmit}
-          className="max-w-[600px] p-8 border-1 border-[#faebd7] rounded-2xl text-[#faebd7] gap-2 flex flex-col"
+          className="max-w-[600px] p-8 border-1 border-[#121212] leading-2 rounded-2xl text-[#121212] gap-2 flex flex-col"
         >
-          <h1>Prebook Perfumes</h1>
+          <h2 className={`text-[#121212] font-bold py-4 text-6xl ${playfairDisplay.className}`}>Prebook Perfumes</h2>
 
           <label htmlFor="name">Enter Your Name:</label>
           <input
@@ -123,7 +126,7 @@ const About = () => {
             placeholder="We will contact you at this address"
           />
 
-          <button type="submit" disabled={loading || success} className="flex items-center gap-2">
+          <button type="submit" disabled={loading || success} className="flex items-center bg-[#121212] text-[#faebd7] gap-2">
             {success ? (
               <>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,14 +138,14 @@ const About = () => {
             ) : loading ? "Submitting..." : "Submit"}
           </button>
 
-          <p className='text-left justify-start'>This form is only for prebooking perfumes. We will contact you once the perfumes are available. <br />Thank you for your interest!</p>
+          <span className='text-left justify-start text-sm leading-tight tracking-tight'>This form is only for prebooking perfumes. We will contact you once the perfumes are available. Thank you for your interest!</span>
         </form>
       </div>
 
       <div className="col portrait columns-1">
         <div className="portrait-container">
           <div className="img">
-            <ParallaxImg src="/perfumes/3.png" alt="" />
+            <ParallaxImg src="/images/coldmark_p.png" alt="" />
           </div>
         </div>
       </div>

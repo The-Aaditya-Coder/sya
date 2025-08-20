@@ -75,7 +75,7 @@ const Hero = () => {
         aboutSection.scrollIntoView({ behavior: 'smooth' });
       }
     }}
-    className='md:bottom-50 bottom-40 z-20 absolute'
+    className='md:bottom-50 bg-[#faebd7] bottom-40 z-20 absolute'
   >
     Pre Book Now
   </button>

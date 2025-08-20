@@ -65,20 +65,17 @@ h4{
 }
 
 button{
-  background-color: antiquewhite;
   border: none;
   border-radius: 2em;
-  color: #121212;
   cursor: pointer;
   font-family: "Inter";
   font-size: 14px;
-  font-weight: 500;
-  padding: 10px 20px; 
+  font-weight: 600;
+  padding: 18px 20px; 
   text-transform: uppercase;
 }
 
 label{
-  color: antiquewhite;
   font-size: 14px;
   font-weight: 400;
   line-height: 1;
@@ -90,7 +87,7 @@ input, textarea{
   outline: none;
   border: none;
   border-radius: 0;
-  border-bottom: antiquewhite solid 1px;
+  border-bottom: #121212 solid 1px;
   width: 100%;
   margin-bottom: 2em;
   padding: 0.2em;
@@ -161,7 +158,8 @@ section.product{
 
 .about{
   display: flex;
-  background-color: coral;
+  background-color: antiquewhite;
+  color: #121212;
   height: 140vh;
 }
 

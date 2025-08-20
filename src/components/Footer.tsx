@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="col">
           <p>
             Join the newsletter
-          <button>Subscribe</button>
+          <button className="bg-[#faebd7]">Subscribe</button>
           </p>
 
           <div className="shop">
