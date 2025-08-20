@@ -39,7 +39,7 @@ const Nav = () => {
     <div
       className={`w-full flex justify-start p-4 items-start top-1 md:top-3 gap-2 fixed z-50 mix-blend-difference`}
     >
-      <h2 className={`${brownSugar.className} z-20 text-4xl md:text-6xl mix-blend-difference text-white`}>Sya</h2>
+      <h2 onClick={() => window.location.href = '/'} className={`${brownSugar.className} cursor-pointer z-20 text-4xl md:text-6xl mix-blend-difference text-white`}>Sya</h2>
       <div
         className='md:w-[150px] w-[100px] flex text-left relative mix-blend-difference'
         style={{
