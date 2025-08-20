@@ -32,7 +32,7 @@ const Product = () => {
               <p className='text-shadow-lg'>{prod.tagline}</p>
             </div>
 
-            <button className="bg-[#faebd7]" className='items-center z-10'>BUY NOW</button>
+            <button className='bg-[#faebd7] items-center z-10'>BUY NOW</button>
           </div>
         </section>
       ))}
