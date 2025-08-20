@@ -10,6 +10,14 @@ const videoMap = {
   glow: '/video/glow.mp4',
 };
 
+const videoPoster = {
+  sya: '/images/sya_poster.png',
+  knight: '/images/knight_p.png',
+  blushe: '/images/blushe_p.png',
+  coldmark: '/images/coldmark_p.png',
+  glow: '/images/glow_p.png',
+};
+
 {/* This is from product------- */}
 import BrownSugar from 'next/font/local'
 
@@ -21,6 +29,7 @@ const brownSugar = BrownSugar({
 
 const Hero = () => {
   const [video, setVideo] = useState(videoMap.sya);
+  const [poster, setPoster] = useState(videoPoster.sya);
   const [fade, setFade] = useState(false);
 
   const handleVideoChange = (newVideo: string) => {
@@ -31,11 +40,15 @@ const Hero = () => {
       setFade(false);
     }, 600); // duration matches fade-out
   };
+  const handlePosterChange = (newPoster: string) => {
+    if (poster === newPoster) return;
+    setPoster(newPoster);
+  };
 
   return (
     <section className="hero">
       <div className="img" style={{ position: 'relative' }}>
-        <ParallaxImg type='video' src={video} alt="" />
+        <ParallaxImg type='video' src={video} poster={poster} alt="" />
         {/* Black fade overlay */}
         <div
           style={{
@@ -73,19 +86,31 @@ const Hero = () => {
       <div className="nav">
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => handleVideoChange(videoMap.knight)}
+          onClick={() => {
+            handleVideoChange(videoMap.knight);
+            handlePosterChange(videoPoster.knight);
+          }}
         >Knight</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => handleVideoChange(videoMap.blushe)}
+          onClick={() => {
+            handleVideoChange(videoMap.blushe);
+            handlePosterChange(videoPoster.blushe);
+          }}
         >Blushé</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => handleVideoChange(videoMap.coldmark)}
+          onClick={() => {
+            handleVideoChange(videoMap.coldmark);
+            handlePosterChange(videoPoster.coldmark);
+          }}
         >Coldmark</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => handleVideoChange(videoMap.glow)}
+          onClick={() => {
+            handleVideoChange(videoMap.glow);
+            handlePosterChange(videoPoster.glow);
+          }}
         >Glow</p>
       </div>
     </section>

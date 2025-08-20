@@ -8,12 +8,13 @@ const lerp = (start: number, end: number, factor: number): number => start + (en
 interface ParallaxImgProps {
     src: string;
     alt?: string;
+    poster?: string;
     type?: 'image' | 'video'; // 'image' (default), 'video', or both
     showImage?: boolean;
     showVideo?: boolean;
 }
 
-const ParallaxImg = ({ src, alt = '', type = 'image', showImage = true, showVideo = false }: ParallaxImgProps) => {
+const ParallaxImg = ({ src, alt = '', poster='', type = 'image', showImage = true, showVideo = false }: ParallaxImgProps) => {
         const mediaRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
         const bounds = useRef<any>(null);
         const currentTranslateY = useRef(0);
@@ -86,6 +87,7 @@ useLenis(({scroll})=>{
                     autoPlay
                     loop
                     muted
+                    poster={poster}
                     onClick={() => { 
   if (mediaRef.current && mediaRef.current instanceof HTMLVideoElement) {
     mediaRef.current.muted = !mediaRef.current.muted;
