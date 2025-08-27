@@ -4,12 +4,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import BrownSugar from 'next/font/local'
 import { Playfair_Display } from 'next/font/google'
 
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 const brownSugar = BrownSugar({
   src: '../../public/fonts/BrownSugar.ttf',
   display: 'swap',
 })
 
-const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 const Nav = () => {
   const [showStory, setShowStory] = useState(true);

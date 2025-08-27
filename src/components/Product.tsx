@@ -11,7 +11,7 @@ const blackMango = BlackMango({
 const Product = () => {
   return (
     <>
-      {ProductItems.map((prod, idx) => (
+      {ProductItems.slice(0, 4).map((prod, idx) => (
         <section className="product" key={idx}>
           <div className="product-brief md:left-[20%] w-[75%] lg:w-[25%]">
             <h4 className='text-shadow-lg text-left p-1'>
@@ -32,7 +32,7 @@ const Product = () => {
               <p className='text-shadow-lg'>{prod.tagline}</p>
             </div>
 
-            <button className='bg-[#faebd7] items-center z-10'>BUY NOW</button>
+            <button className='bg-[#faebd7] items-center z-10' onClick={() => { window.location.href = `/${prod.id}`; }}>BUY NOW</button>
           </div>
         </section>
       ))}

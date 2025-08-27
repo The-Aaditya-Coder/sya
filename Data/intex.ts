@@ -1,30 +1,194 @@
 export const ProductItems = [
     {
+        id: "knight",
         title: "Knight",
         adverb: "[नाइट]/(noun)",
         tagline: "Made for the man who leads without noise.",
-        brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4"
+        brief: "Silent. Relentless. Unstoppable.",
+        para: "Knight is not about noise — it’s about presence. It opens with the sharp clarity of Bergamot and Lemon Zest, cutting through like first light at dawn. At its heart, the boldness of Jasmine and Sage brings balance — a rare mix of elegance and strength. Finally, it settles into the commanding warmth of Pure Musk, Amberwood, and Tonka Bean, leaving behind an unshakable trail — quiet, steady, unforgettable.",
+        top: "Bergamot, Lemon Zest — sharp focus, pure clarity",
+        heart: "Jasmine, Sage — elegance with an edge",
+        base: "Pure Musk, Amberwood, Tonka Bean — strength that lingers without words",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 300,
+        discount: 499,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Knight%20perfume"
     },
     {
+        id: "blushe",
         title: "Blushé",
         adverb: "[ब्लश]/(noun)",
         tagline: "Made of glances, not words.",
-        brief: "Decipline // graciously // Alpha Male",
-        src: "/video/blushe.mp4"
+        brief: "Soft. Romantic. Charming",
+        para: "Blushé is the fragrance of quiet emotions — tender yet unforgettable. Opening with a playful burst of Purple Passion Fruit, Grapefruit, and Pineapple, it carries the sweetness of first glances and the thrill of butterflies in your stomach. At its heart, delicate Shangri-La Peony and Jasmine bloom like unspoken words, soft yet powerful. Finally, it settles into the comforting warmth of Vanilla Orchid, Musk, and Woody Notes, wrapping you in grace that lingers long after the moment has passed.",
+        top: "Purple Passion Fruit, Grapefruit, Pineapple — a sparkling burst of joy",
+        heart: "Peony, Jasmine — soft romance in full bloom",
+        base: "Vanilla Orchid, Musk, Woody Notes — warmth that whispers forever",
+        src: "/video/blushe.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 300,
+        discount: 499,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Blushé%20perfume"
     },
     {
+        id: "coldmark",
         title: "Coldmark",
         adverb: "[कोल्डमार्क]/(noun)",
         tagline: "Your Aura will Say Everything!",
-        brief: "Decipline // graciously // Alpha Male",
-        src: "/video/coldmark.mp4"
+        brief: "Cool. Strong. Fresh. Aura.",
+        para: "Coldmark is the fragrance of quiet power — a presence you can’t ignore. It opens with the crisp freshness of Cypress and Myrtle, cool as morning air. At its heart, noble woods — Sandalwood and Cedar — stand tall, steady, unshaken. Finally, it lingers with the deep warmth of Musk, Amber, and Rosewood, leaving behind a mark that is unforgettable, even when the man is gone.",
+        top: "Cypress, Myrtle — fresh, sharp clarity",
+        heart: "Sandalwood, Cedar — strength rooted in calm",
+        base: "Musk, Amber, Rosewood — a lingering mark of depth",
+        src: "/video/coldmark.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 300,
+        discount: 499,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Coldmark%20perfume"
     },
     {
+        id: "glow",
         title: "Glow",
         adverb: "[ग्लो]/(noun)",
         tagline: "For the woman who lights up the silence.",
+        brief: "Sweet. Powerful. Bright.",
+        para: "Glow is the fragrance of quiet light — soft, magnetic, and eternal. It begins with the delicate embrace of Rose and Saffron, a luminous opening that feels like dawn breaking on skin. At its heart, the depth of Agarwood and Caramel creates a rare harmony — both mysterious and sweet. Finally, it settles into the timeless warmth of Resins, Amber, and Woody Notes, leaving behind a trail that glows softly, like a memory that refuses to fade.",
+        top: "Rose, Saffron — a radiant opening of grace",
+        heart: "Agarwood, Caramel — where depth meets sweetness",
+        base: "Resins, Amber, Woody Notes — an eternal glow that lingers",
+        src: "/video/glow.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 300,
+        discount: 499,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Glow%20perfume"
+    },
+    {
+        id: "male",
+        title: "Knight & Coldmark",
+        adverb: "[पुरुष]/(noun)",
+        tagline: "The ultimate combo for the silent hustler with an unforgettable aura.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/perfumes/founder.png"
-    }
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Knight%20%26%20Coldmark%20perfume"
+    },
+    {
+        id: "female",
+        title: "Blushé & Glow",
+        adverb: "[महिला]/(noun)",
+        tagline: "A perfect blend for the dreamer who turns every silence into a charming story.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Blushé%20%26%20Glow%20perfume"
+    },
+    {
+        id: "couple1",
+        title: "Coldmark & Glow",
+        adverb: "[couple]/(noun)",
+        tagline: "A rare harmony of cool elegance and radiant warmth—for visionaries who shine with balance.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Coldmark%20%26%20Glow%20perfume"
+    },
+    {
+        id: "couple2",
+        title: "Coldmark & Blushé",
+        adverb: "[couple]/(noun)",
+        tagline: "The combo for couples who are bold together yet share a soft, unforgettable aura.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Coldmark%20%26%20Glow%20perfume"
+    },
+    {
+        id: "couple3",
+        title: "Knight & Blushé",
+        adverb: "[couple]/(noun)",
+        tagline: "The fusion of bold strength and soft charm—perfect for those who captivate effortlessly.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Knight%20%26%20Blushé%20perfume"
+    },
+    {
+        id: "couple4",
+        title: "Knight & Glow",
+        adverb: "[couple]/(noun)",
+        tagline: "The combo for couples who are silent warriors together but light up every room they enter.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 449,
+        discount: 699,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Knight%20%26%20Blushé%20perfume"
+    },
+    {
+        id: "value-pack",
+        title: "Knight | Blushé | Coldmark | Glow",
+        adverb: "[value pack]/(noun)",
+        tagline: "A Symphony of Four Perfume Duos- crafted to embody boldness, charm, balance, and elegance in every aura. Together, they form a collection that celebrates strength, softness, passion, and brilliance in every unforgettable moment.",
+        brief: "Decipline // graciously // Alpha Male",
+        src: "/video/knight.mp4",
+        images: [
+            "/perfumes/1.png",
+            "/perfumes/2.png",
+            "/perfumes/3.png",
+        ],
+        price: 699,
+        discount: 999,
+        link:"https://wa.me/919665854768?text=I'm%20interested%20in%20buying%20the%20Coldmark%20%26%20Glow%20perfume"
+    },
 ]

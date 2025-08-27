@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 
 
 const videoMap = {
-  sya: '/video/sya (1).mp4',
-  knight: '/video/knight (1).mp4',
-  blushe: '/video/blushe (1).mp4',
-  coldmark: '/video/coldmark (1).mp4',
-  glow: '/video/glow (1).mp4',
+  sya: '/video/sya.mp4',
+  knight: '/video/knight.mp4',
+  blushe: '/video/blushe.mp4',
+  coldmark: '/video/coldmark.mp4',
+  glow: '/video/glow.mp4',
 };
 
 const videoPoster = {
@@ -71,7 +71,7 @@ const Hero = () => {
       </div>
 
 
-<div className='w-full flex justify-center absolute'>
+{/* <div className='w-full flex justify-center absolute'>
   <button
     onClick={() => {
       const aboutSection = document.getElementById('about-section');
@@ -83,7 +83,7 @@ const Hero = () => {
   >
     Pre Book Now
   </button>
-</div>
+</div> */}
 
 {/* This is from product------- */}
 

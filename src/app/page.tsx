@@ -16,12 +16,12 @@ export default function Home() {
     <Lenis root>
       <Nav />
       <Hero />
-    {/* <Product /> */}
+    <Product />
       <div id="about-section">
         <About />
       </div>
       <Banner />
-      {/* <Footer /> */}
+      <Footer />
     </Lenis>
   );
 }
