@@ -1,6 +1,6 @@
 'use client';
 import { Playfair_Display } from 'next/font/google';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 // Dynamically import react-confetti for client-side only
 const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
@@ -57,7 +57,7 @@ const sendTelegramMessage = async (form: {
   });
 };
 
-const CartPage = () => {
+const CartContent = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
   const product = ProductItems.find((item) => item.id === id) || ProductItems[0];
@@ -344,6 +344,14 @@ const CartPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const CartPage = () => {
+  return (
+    <Suspense fallback={<div className="about"><div className="col intro my-[4em] columns-2 text-[#121212]"><div>Loading...</div></div></div>}>
+      <CartContent />
+    </Suspense>
   );
 };
 
