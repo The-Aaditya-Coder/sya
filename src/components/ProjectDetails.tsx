@@ -20,10 +20,10 @@ interface Product {
     price: number;
     discount?: number;
     tagline: string;
-    para: string;
-    top: string;
-    heart: string;
-    base: string;
+    para?: string;
+    top?: string;
+    heart?: string;
+    base?: string;
     notes?: string;
     images: string[];
 }
@@ -114,10 +114,10 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
 
             <div className='my-[5em] flex flex-col items-left justify-center text-left px-4 max-w-2xl gap-5'>
                 <h2 className='tracking-wide font-black text-4xl text-[#faebd7] uppercase'>{product.tagline}</h2>
-                <p>{product.para}</p>
+                <p>{product.para ?? ''}</p>
                 {/* <p>Notes: <br/> Top:{product.notes.split("Heart:")[0]} <br/> Heart:{product.notes.split("Heart:")[1].split("Base:")[0]} <br/> Base:{product.notes.split("Base:")[1]}</p> */}
                 <div className='flex flex-col gap-2'>
-                    <p>Notes:</p> <p> Top: {product.top} </p> <p> Heart: {product.heart} </p> <p> Base: {product.base} </p>
+                    <p>Notes:</p> <p> Top: {product.top ?? ''} </p> <p> Heart: {product.heart ?? ''} </p> <p> Base: {product.base ?? ''} </p>
                 </div>
             </div>
 
