@@ -12,7 +12,27 @@ const blackMango = BlackMango({
 })
 
 
-const ProjectDetails = ({ product }) => {
+interface Product {
+    id: string;
+    src: string;
+    title: string;
+    brief: string;
+    price: number;
+    discount?: number;
+    tagline: string;
+    para: string;
+    top: string;
+    heart: string;
+    base: string;
+    notes?: string;
+    images: string[];
+}
+
+interface ProjectDetailsProps {
+    product: Product;
+}
+
+const ProjectDetails = ({ product }: ProjectDetailsProps) => {
     const router = useRouter();
     const [comboOpen, setComboOpen] = useState(false);
     const handleBuyNow = () => {
@@ -21,7 +41,7 @@ const ProjectDetails = ({ product }) => {
     const handlePopUp = () => {
         setComboOpen(true);
     };
-    const handleComboBuy = (comboId) => {
+    const handleComboBuy = (comboId: string) => {
         router.push(`/cart?id=${comboId}`);
         setComboOpen(false);
     };

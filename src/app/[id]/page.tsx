@@ -10,20 +10,30 @@ const Page = () => {
 
    const params = useParams(); // Use useParams to get route parameters
   const router = useRouter(); // Use useRouter from next/navigation
-  const { id } = params; // Access the dynamic route parameter
 
-  // Find the project matching the `id`
-  const product = ProductItems.find((item) => item.id === id);
+  // id from params may be string or array, ensure string
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
+
+  // Find the product matching the `id` (ensure both are strings)
+  const product = ProductItems.find((item) => String(item.id) === String(id));
 
   if (!product) {
     return <div className='w-screen h-screen bg-black text-white flex flex-col justify-center items-center gap-4'>
-      <div>Your Searched {title} Product not found please</div>
+      <div>Your searched "{id}" was not found.</div>
       <button className='p-4 bg-amber-100 text-black' onClick={() => router.push('/')}>Go back to home</button>
     </div>;
-  }  
+  }
+  // Ensure all required fields are present for ProductDetails
+  const safeProduct = {
+    ...product,
+    para: product.para || '',
+    top: product.top || '',
+    heart: product.heart || '',
+    base: product.base || ''
+  };
   return (
     <div>
-        <ProductDetails product={product} />
+        <ProductDetails product={safeProduct} />
     </div>
   )
 }
