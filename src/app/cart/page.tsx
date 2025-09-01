@@ -24,7 +24,7 @@ import { ProductItems } from '@/../Data/intex';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
-const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL || "";
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "";
 const TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || "";
 const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || "";
 
@@ -229,7 +229,7 @@ const CartContent = () => {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border text-nowrap border-gray-300 rounded-md"
             placeholder="Your full name"
           />
           <label htmlFor="email">Enter Your Email:</label>
@@ -240,15 +240,24 @@ const CartContent = () => {
             onChange={handleChange}
             required
             placeholder="Your email address"
+            className='text-nowrap'
           />
           <label htmlFor="phone">Enter Your Phone Number:</label>
           <input
-            type='tel'
+            type="tel"
             id="phone"
             value={form.phone}
-            onChange={handleChange}
+            onChange={e => {
+              // Only allow numbers
+              const val = e.target.value.replace(/[^0-9]/g, '');
+              setForm({ ...form, phone: val });
+            }}
             required
             placeholder="Your number to contact you"
+            className='text-nowrap'
+            pattern="[0-9]{10}"
+            maxLength={10}
+            inputMode="numeric"
           />
           <label htmlFor="address">Street Address / House No:</label>
           <textarea
@@ -256,15 +265,17 @@ const CartContent = () => {
             value={form.streetaddress}
             onChange={handleChange}
             required
-            placeholder="Enter building, street, or apartment details"
+            placeholder="Enter street, apartment details"
+            className='text-nowrap'
           />
-          <label htmlFor="landmark">Landmark (Optional)</label>
+          <label htmlFor="landmark">Landmark</label>
           <textarea
             id="landmark"
             value={form.landmark}
             onChange={handleChange}
             required
-            placeholder="Nearby landmark to help us locate you easily"
+            placeholder="Nearby landmark to locate you easily"
+            className='text-nowrap'
           />
           <label htmlFor="city">City</label>
           <textarea
@@ -273,6 +284,7 @@ const CartContent = () => {
             onChange={handleChange}
             required
             placeholder="Enter your city"
+            className='text-nowrap'
           />
           <label htmlFor="state">State</label>
           <textarea
@@ -280,16 +292,25 @@ const CartContent = () => {
             value={form.state}
             onChange={handleChange}
             required
-            placeholder="Select your state from dropdown"
+            placeholder="Select your state"
+            className='text-nowrap'
           />
           <label htmlFor="pincode">Pincode / Postal Code</label>
-          <textarea
-          itemType='number'
+          <input
+            type="number"
             id="pincode"
             value={form.pincode}
-            onChange={handleChange}
+            onChange={e => {
+              // Only allow numbers, max 6 digits
+              let val = e.target.value.replace(/[^0-9]/g, '');
+              if (val.length > 6) val = val.slice(0, 6);
+              setForm({ ...form, pincode: val });
+            }}
             required
             placeholder="Enter 6-digit pincode"
+            className='text-nowrap'
+            maxLength={6}
+            inputMode="numeric"
           />
           <label htmlFor="address">Enter Your Address:</label>
           <textarea
@@ -298,6 +319,7 @@ const CartContent = () => {
             onChange={handleChange}
             required
             placeholder="We will contact you at this address"
+            className='text-nowrap'
           />
 
           <div className="my-2 w-full start-0 flex flex-col align-start left-0">
@@ -308,7 +330,7 @@ const CartContent = () => {
                 className={`flex-1 py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'cod' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'}`}
                 onClick={() => handlePaymentType({ target: { value: 'cod' } } as any)}
               >
-                Cash on Delivery<br/><span className='font-bold text-lg'>₹{product.price + 20}</span>
+                Cash on Delivery<br/><span className='font-bold text-lg'>₹{product.price + 50}</span>
               </button>
               <button
                 type="button"
@@ -322,7 +344,7 @@ const CartContent = () => {
             <span className='text-sm text-[#121212] flex items-center leading-4'>Note: For orders placed with Cash on Delivery (COD), an additional ₹20 delivery charge will be applied.</span>
           </div>
 
-          <button type="submit" disabled={loading || success} className="flex items-center bg-[#121212] text-[#faebd7] gap-2">
+          <button type="submit" disabled={loading || success} className="flex items-center bg-[#121212] px-24 py-12 text-[#faebd7] gap-2 text-lg rounded-lg">
             {success ? (
               <>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,13 +355,13 @@ const CartContent = () => {
               </>
             ) : loading ? "Processing..." : "Confirm Your Order"}
           </button>
-          <span className='text-left justify-start text-sm leading-tight tracking-tight'>This form is to take order for {product.title}, This platform is secure and your information is safe with us. Your order will be delivered to you within 1-4 days in Nagpur, besides this location order will ship within 4-7 working days and will be handled with utmost care.</span>
+          <span className='text-left justify-start text-sm leading-tight tracking-tight'>Place your order for {product.title}. Your details are safe with us. Delivery in Nagpur: 1–4 days. Outside Nagpur: 4–7 days, carefully handled.</span>
         </form>
       </div>
-      <div className="col portrait columns-1">
-        <div className="portrait-container">
+      <div className="portrait relative mb-[40vh]">
+        <div className="absolute inset-0 h-[50vh] md:h-full">
           <div className="img">
-            <ParallaxImg src={product.images[0]} alt={product.title} />
+            <ParallaxImg src={product.images[2]} alt={product.title} />
           </div>
         </div>
       </div>

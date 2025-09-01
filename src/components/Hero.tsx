@@ -3,19 +3,19 @@ import React, { useState } from 'react'
 
 
 const videoMap = {
-  sya: '/video/sya.mp4',
-  knight: '/video/knight.mp4',
-  blushe: '/video/blushe.mp4',
-  coldmark: '/video/coldmark.mp4',
-  glow: '/video/glow.mp4',
+  sya: '/video/sya-main.mp4',
+  knight: '/video/knight1.mp4',
+  blushe: '/video/blushe1.mp4',
+  coldmark: '/video/coldmark1.mp4',
+  glow: '/video/glow1.mp4',
 };
 
 const videoPoster = {
   sya: '/images/sya_poster.png',
-  knight: '/images/knight_p.png',
-  blushe: '/images/blushe_p.png',
-  coldmark: '/images/coldmark_p.png',
-  glow: '/images/glow_p.png',
+  knight: '/perfumes/knight1.png',
+  blushe: '/perfumes/blushe1.png',
+  coldmark: '/perfumes/coldmark1.png',
+  glow: '/perfumes/glow1.png',
 };
 
 {/* This is from product------- */}

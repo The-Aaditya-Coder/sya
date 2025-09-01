@@ -20,15 +20,15 @@ const Footer = () => {
             <h1 className={`${blackMango.className} cursor-pointer`} onClick={()=> window.location.href = "/glow"}>Glow</h1>
             <h1 className={`${blackMango.className} cursor-pointer`} onClick={()=> window.location.href = "/blushe"}>Blushé</h1>
           </div>
-          <h2 className={`text-2xl ${playfairDisplay.className} italic uppercase leading-5 font-bold text-[#faebd7]`}>Crafting Perfume Story</h2>
+          <h2 className={`text-2xl ${playfairDisplay.className} italic uppercase leading-5 font-bold text-[#121212]`}>Crafting Perfume Story</h2>
         </div>
         <div className="col">
           <div className="shop">
             <div className="img">
-              <ParallaxImg src="/perfumes/2.png" alt="" />
+              <ParallaxImg src="/perfumes/coldmark3.png" alt="" />
             </div>
           </div>
-          <p>&copy; 2025 Sya Perfume x Avantula</p>
+          <label>&copy; 2025 Sya Perfume x Avantula</label>
         </div>
         </section>
   )
