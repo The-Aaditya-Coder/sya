@@ -9,7 +9,7 @@ export const ProductItems = [
         top: "Bergamot, Lemon Zest — sharp focus, pure clarity",
         heart: "Jasmine, Sage — elegance with an edge",
         base: "Pure Musk, Amberwood, Tonka Bean — strength that lingers without words",
-        src: "/video/knight1.mp4",
+        src: "/video/knight1.MP4",
         images: [
             "/perfumes/knight1.png",
             "/perfumes/knight2.png",
@@ -29,7 +29,7 @@ export const ProductItems = [
         top: "Purple Passion Fruit, Grapefruit, Pineapple — a sparkling burst of joy",
         heart: "Peony, Jasmine — soft romance in full bloom",
         base: "Vanilla Orchid, Musk, Woody Notes — warmth that whispers forever",
-        src: "/video/blushe1.mp4",
+        src: "/video/blushe1.MP4",
         images: [
             "/perfumes/blushe1.png",
             "/perfumes/blushe2.png",
@@ -49,7 +49,7 @@ export const ProductItems = [
         top: "Cypress, Myrtle — fresh, sharp clarity",
         heart: "Sandalwood, Cedar — strength rooted in calm",
         base: "Musk, Amber, Rosewood — a lingering mark of depth",
-        src: "/video/coldmark1.mp4",
+        src: "/video/coldmark1.MP4",
         images: [
             "/perfumes/coldmark1.png",
             "/perfumes/coldmark2.png",
@@ -69,7 +69,7 @@ export const ProductItems = [
         top: "Rose, Saffron — a radiant opening of grace",
         heart: "Agarwood, Caramel — where depth meets sweetness",
         base: "Resins, Amber, Woody Notes — an eternal glow that lingers",
-        src: "/video/glow1.mp4",
+        src: "/video/glow1.MP4",
         images: [
             "/perfumes/glow1.png",
             "/perfumes/glow2.png",
@@ -85,7 +85,7 @@ export const ProductItems = [
         adverb: "[पुरुष]/(noun)",
         tagline: "The ultimate combo for the silent hustler with an unforgettable aura.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -101,7 +101,7 @@ export const ProductItems = [
         adverb: "[महिला]/(noun)",
         tagline: "A perfect blend for the dreamer who turns every silence into a charming story.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -117,7 +117,7 @@ export const ProductItems = [
         adverb: "[couple]/(noun)",
         tagline: "A rare harmony of cool elegance and radiant warmth—for visionaries who shine with balance.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -133,7 +133,7 @@ export const ProductItems = [
         adverb: "[couple]/(noun)",
         tagline: "The combo for couples who are bold together yet share a soft, unforgettable aura.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -149,7 +149,7 @@ export const ProductItems = [
         adverb: "[couple]/(noun)",
         tagline: "The fusion of bold strength and soft charm—perfect for those who captivate effortlessly.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -165,7 +165,7 @@ export const ProductItems = [
         adverb: "[couple]/(noun)",
         tagline: "The combo for couples who are silent warriors together but light up every room they enter.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
@@ -181,7 +181,7 @@ export const ProductItems = [
         adverb: "[value pack]/(noun)",
         tagline: "A Symphony of Four Perfume Duos- crafted to embody boldness, charm, balance, and elegance in every aura. Together, they form a collection that celebrates strength, softness, passion, and brilliance in every unforgettable moment.",
         brief: "Decipline // graciously // Alpha Male",
-        src: "/video/knight.mp4",
+        src: "/video/knight.MP4",
         images: [
             "/perfumes/1.png",
             "/perfumes/2.png",
