@@ -18,7 +18,7 @@ const About = () => {
       <div className="col portrait justify-center">
         <div className="portrait-container">
           <div className="img">
-            <ParallaxImg src="/perfumes/blushe2.png" alt="" />
+            <ParallaxImg src="/perfumes/blushe3.png" alt="" />
           </div>
         </div>
       </div>
