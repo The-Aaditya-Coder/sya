@@ -62,7 +62,7 @@ const CartContent = () => {
   const id = searchParams.get('id');
   const product = ProductItems.find((item) => item.id === id) || ProductItems[0];
 
-  const [form, setForm] = useState({ name: '', email: '', phone: '', streetaddress: '', city: '', state: '', pincode: '', landmark: '', address:'', perfumename: product.title, purchaseinfo: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', streetaddress: '', city: '', state: '', pincode: '', landmark: '', address: '', perfumename: product.title, purchaseinfo: '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -151,7 +151,7 @@ const CartContent = () => {
           formData.append("phone", form.phone);
           formData.append("address", form.address);
           formData.append("perfumename", form.perfumename);
-          formData.append("purchaseinfo",  response.razorpay_payment_id);
+          formData.append("purchaseinfo", response.razorpay_payment_id);
 
           const res = await fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
@@ -207,7 +207,7 @@ const CartContent = () => {
       {/* Green popup on success */}
       {showPopup && (
         <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 bg-green-500 text-white px-8 py-4 rounded-lg shadow-lg flex items-center gap-2 text-lg animate-bounce">
-          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M7 13l3 3 7-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#22c55e" /><path d="M7 13l3 3 7-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           Order placed successfully!
         </div>
       )}
@@ -324,37 +324,185 @@ const CartContent = () => {
 
           <div className="my-2 w-full start-0 flex flex-col align-start left-0">
             <span className="font-semibold my-4">Payment Method:</span>
-            <div className="flex gap-4 w-full">
+            <div className="flex flex-col gap-4 w-full">
+
+
               <button
                 type="button"
-                className={`flex-1 py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'cod' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'}`}
-                onClick={() => handlePaymentType({ target: { value: 'cod' } } as any)}
+                disabled={loading || success}
+                className={`w-full py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'online' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'} ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                onClick={async () => {
+                  // Validate required fields before submitting online payment
+                  const requiredFields = [form.name, form.email, form.phone, form.streetaddress, form.landmark, form.city, form.state, form.pincode, form.address];
+                  if (requiredFields.some(f => !f || f.trim() === '')) {
+                    alert('Please fill all required fields before placing your order.');
+                    return;
+                  }
+                  setPaymentType('online');
+                  setForm({ ...form, purchaseinfo: 'Online Payment' });
+                  setLoading(true);
+                  setSuccess(false);
+                  // Razorpay logic
+                  const loaded = await loadRazorpayScript();
+                  if (!loaded) {
+                    alert('Failed to load Razorpay.');
+                    setLoading(false);
+                    return;
+                  }
+                  const amount = (product.price || 0) * 100;
+                  const options = {
+                    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '',
+                    amount,
+                    currency: 'INR',
+                    appname: product.title,
+                    description: product.title,
+                    handler: async function (response: any) {
+                      try {
+                        const formData = new FormData();
+                        formData.append("name", form.name);
+                        formData.append("email", form.email);
+                        formData.append("phone", form.phone);
+                        formData.append("address", form.address);
+                        formData.append("perfumename", form.perfumename);
+                        formData.append("purchaseinfo", response.razorpay_payment_id);
+                        const res = await fetch(GOOGLE_SCRIPT_URL, {
+                          method: "POST",
+                          body: formData,
+                        });
+                        const text = await res.text();
+                        if (text === "Success") {
+                          await sendTelegramMessage({ ...form, purchaseinfo: `Online Payment | Razorpay Payment ID: ${response.razorpay_payment_id}` });
+                          setSuccess(true);
+                          setShowConfetti(true);
+                          setShowPopup(true);
+                          setTimeout(() => setShowConfetti(false), 4000);
+                          setTimeout(() => setShowPopup(false), 3500);
+                          setForm({ name: '', email: '', phone: '', streetaddress: '', city: '', state: '', landmark: '', pincode: '', address: '', perfumename: product.title, purchaseinfo: '' });
+                        } else {
+                          alert("Something went wrong: " + text);
+                        }
+                      } catch (err) {
+                        alert("Failed to submit");
+                      }
+                      setLoading(false);
+                    },
+                    prefill: {
+                      name: form.name,
+                      email: form.email,
+                      contact: form.phone,
+                    },
+                    notes: {
+                      name: form.name,
+                      streetaddress: form.streetaddress,
+                      city: form.city,
+                      state: form.state,
+                      pincode: form.pincode,
+                      landmark: form.landmark,
+                      address: form.address,
+                    },
+                    theme: {
+                      color: '#121212',
+                    },
+                  };
+                  // @ts-ignore
+                  const rzp = new window.Razorpay(options);
+                  rzp.open();
+                  setLoading(false);
+                }}
               >
-                Cash on Delivery<br/><span className='font-bold text-lg'>₹{product.price + 20}</span>
+                <span className="flex flex-col items-start">
+                  <span>Pay Online</span>
+                  <span className='font-bold text-lg'>₹{product.price}</span>
+                  <span className='text-xs text-gray-500'>Pay securely via Razorpay</span>
+                  {loading && paymentType === 'online' && <span className='text-xs text-yellow-500'>Processing... Please wait</span>}
+                  {success && paymentType === 'online' && (
+                    <span className='flex items-center text-green-600 mt-2'>
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="10" fill="#22c55e" />
+                        <path d="M6 10.5L9 13.5L14 8.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Confirmed! Your order has been placed.
+                    </span>
+                  )}
+                </span>
               </button>
+
+
               <button
                 type="button"
-                className={`flex-1 py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'online' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'}`}
-                onClick={() => handlePaymentType({ target: { value: 'online' } } as any)}
+                disabled={loading || success}
+                className={`w-full py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'cod' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'} ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                onClick={async () => {
+                  // Validate required fields before submitting COD
+                  const requiredFields = [form.name, form.email, form.phone, form.streetaddress, form.landmark, form.city, form.state, form.pincode, form.address];
+                  if (requiredFields.some(f => !f || f.trim() === '')) {
+                    alert('Please fill all required fields before placing your order.');
+                    return;
+                  }
+                  setPaymentType('cod');
+                  setForm({ ...form, purchaseinfo: 'Cash on Delivery' });
+                  setLoading(true);
+                  setSuccess(false);
+                  try {
+                    const formData = new FormData();
+                    formData.append("name", form.name);
+                    formData.append("email", form.email);
+                    formData.append("phone", form.phone);
+                    formData.append("landmark", form.landmark);
+                    formData.append("streetaddress", form.streetaddress);
+                    formData.append("city", form.city);
+                    formData.append("state", form.state);
+                    formData.append("pincode", form.pincode);
+                    formData.append("address", form.address);
+                    formData.append("perfumename", form.perfumename);
+                    formData.append("purchaseId", form.purchaseinfo);
+                    formData.append("purchaseinfo", 'Cash on Delivery');
+                    const res = await fetch(GOOGLE_SCRIPT_URL, {
+                      method: "POST",
+                      body: formData,
+                    });
+                    const text = await res.text();
+                    if (text === "Success") {
+                      await sendTelegramMessage({ ...form, purchaseinfo: 'Cash on Delivery' });
+                      setSuccess(true);
+                      setShowConfetti(true);
+                      setShowPopup(true);
+                      setTimeout(() => setShowConfetti(false), 4000);
+                      setTimeout(() => setShowPopup(false), 3500);
+                      setForm({ name: '', email: '', phone: '', streetaddress: '', landmark: '', city: '', state: '', pincode: '', address: '', perfumename: product.title, purchaseinfo: '' });
+                    } else {
+                      alert("Something went wrong: " + text);
+                    }
+                  } catch (err) {
+                    alert("Failed to submit");
+                  }
+                  setLoading(false);
+                }}
               >
-                Pay Online<br/><span className='font-bold text-lg'>₹{product.price}</span>
+                <span className="flex flex-col items-start">
+                  <span>Cash on Delivery</span>
+                  <span className='font-bold text-lg'>₹{product.price + 20}</span>
+                  <span className='text-xs text-gray-500'>Pay after delivery</span>
+                  {loading && paymentType === 'cod' && <span className='text-xs text-yellow-500'>Processing... Please wait</span>}
+                  {success && paymentType === 'cod' && (
+                    <span className='flex items-center text-green-600 mt-2'>
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="10" fill="#22c55e" />
+                        <path d="M6 10.5L9 13.5L14 8.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Confirmed! Your order has been placed.
+                    </span>
+                  )}
+                </span>
               </button>
+
+
+
             </div>
             <span className='text-sm text-[#121212] flex items-center my-2'><ShieldCheck width={16} height={16} />Your payment will be processed securely.</span>
             <span className='text-sm text-[#121212] flex items-center leading-4'>Note: For orders placed with Cash on Delivery (COD), an additional ₹20 delivery charge will be applied.</span>
           </div>
 
-          <button type="submit" disabled={loading || success} className="flex items-center bg-[#121212] px-24 py-12 text-[#faebd7] gap-2 text-lg rounded-lg">
-            {success ? (
-              <>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="10" fill="#22c55e"/>
-                  <path d="M6 10.5L9 13.5L14 8.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                Your Order is Confirmed
-              </>
-            ) : loading ? "Processing... Please wait" : "Confirm Your Order"}
-          </button>
           <span className='text-left justify-start text-sm leading-tight tracking-tight'>Place your order for {product.title}. Your details are safe with us. Delivery in Nagpur: 1–4 days. Outside Nagpur: 4–7 days, carefully handled.</span>
         </form>
       </div>

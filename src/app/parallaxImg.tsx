@@ -40,10 +40,10 @@ const ParallaxImg = ({ src, alt = '', poster='', className = '', type = 'image',
                 currentTranslateY.current = lerp(
                     currentTranslateY.current,
                     targetTranslateY.current,
-                    0.5
+                    0.1
                 );
                 if(
-                    Math.abs(currentTranslateY.current - targetTranslateY.current) > 0.5
+                    Math.abs(currentTranslateY.current - targetTranslateY.current) > 0.1
                 ){
                     (mediaRef.current as any).style.transform = `translateY(${currentTranslateY.current}px) scale(1.2)`;
                 }
@@ -65,7 +65,7 @@ const ParallaxImg = ({ src, alt = '', poster='', className = '', type = 'image',
 useLenis(({scroll})=>{
     if (!bounds.current) return;
     const relativeScroll = scroll - bounds.current.top;
-    targetTranslateY.current = relativeScroll * 0.2; // Adjust the multiplier for parallax effect
+    targetTranslateY.current = relativeScroll * 0.1; // Adjust the multiplier for parallax effect
 })
 
     return (

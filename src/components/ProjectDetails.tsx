@@ -97,7 +97,7 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
                                         <span className='font-semibold'>Glow + Blushe</span>
                                         <label>Two perfumes are for women</label>
                                     </div>
-                                    <button className="bg-[#faebd7] text-black px-3 py-1 rounded" onClick={() => handleComboBuy('female')}>₹499</button>
+                                    <button className="bg-[#faebd7] text-black px-3 py-1 rounded" onClick={() => handleComboBuy('female')}>₹449</button>
                                 </div>
                                 <div className="flex justify-between items-center border-b pb-2">
                                     <div className='flex flex-col'>
