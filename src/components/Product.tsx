@@ -21,10 +21,9 @@ const Product = () => {
 
           <div className="col product-cover">
             <div className="img w-full object-fill">
-              <ParallaxImg type="video" src={prod.src} alt="" />
+              <ParallaxImg type="video" src={prod.src} poster={prod.images[2]} alt="" />
             </div>
           </div>
-
           <div className="col product-list">
             <div className="product">
               <h1 className={`mix-blend-difference uppercase text-2xl ${blackMango.className}`}>{prod.title}</h1>

@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <section className="banner">
         <div className="img">
-          <ParallaxImg src="/perfumes/bck.jpg" className=' brightness-75' alt="" />
+          <ParallaxImg src="/perfumes/bck.JPG" className=' brightness-75' alt="" />
         </div>
         <div className="banner-copy">
           <p>To know more about our products</p>

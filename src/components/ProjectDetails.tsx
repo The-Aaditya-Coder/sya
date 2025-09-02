@@ -1,10 +1,13 @@
+"use client";
 import React, { useState } from 'react'
 import Image from 'next/image'
 import '@/app/globals.css'
 import { CircleStar } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-
 import BlackMango from 'next/font/local'
+import { Metadata } from 'next'
+
+
 
 const blackMango = BlackMango({
     src: '../../public/fonts/BlackMango.ttf',
@@ -32,6 +35,7 @@ interface ProjectDetailsProps {
     product: Product;
 }
 
+
 const ProjectDetails = ({ product }: ProjectDetailsProps) => {
     const router = useRouter();
     const [comboOpen, setComboOpen] = useState(false);
@@ -55,8 +59,10 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
                 `}
             </style>
             <div className='w-screen h-screen bg-cover relative flex items-center justify-center'>
-                <video src={product.src} autoPlay loop muted className='w-full h-full object-cover' />
-                <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-[#faebd7]/100 via-[#faebd7]/25 to-[#faebd7]/0 opacity-100"></div>
+                <video src={product.src} poster={product.images[2]} autoPlay loop muted className='w-full h-full object-contain align-top top-0' />
+                <div className="absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-[#faebd7]/100 via-[#faebd7]/50 to-transparent"></div>
+
+
             </div>
 
             <div className='absolute h-full bottom-0 w-screen flex flex-col justify-end items-center gap-4'>
@@ -69,7 +75,7 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
 
                 <div className='flex gap-4'>
                     <button onClick={handleBuyNow} className='bg-[#faebd7] border-black border-1 text-black'>Buy Now</button>
-                    <button onClick={handlePopUp} className='bg-[#faebd7] text-black mix-blend-difference'>Combo Offer 41%Off</button>
+                    <button onClick={handlePopUp} className='bg-[#121212] text-[#faebd7]'>Combo Offer 41%Off</button>
                 </div>
 
                 {/* Combo Offer Modal */}
@@ -126,7 +132,8 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
                 <p>{product.para ?? ''}</p>
                 {/* <p>Notes: <br/> Top:{product.notes.split("Heart:")[0]} <br/> Heart:{product.notes.split("Heart:")[1].split("Base:")[0]} <br/> Base:{product.notes.split("Base:")[1]}</p> */}
                 <div className='flex flex-col gap-2'>
-                    <p>Notes:</p> <p> Top: {product.top ?? ''} </p> <p> Heart: {product.heart ?? ''} </p> <p> Base: {product.base ?? ''} </p>
+                    <ul className='font-semibold'>Notes:</ul>
+                    <li> Top: {product.top ?? ''} </li> <li> Heart: {product.heart ?? ''} </li> <li> Base: {product.base ?? ''} </li>
                 </div>
             </div>
 
@@ -165,7 +172,7 @@ const ProjectDetails = ({ product }: ProjectDetailsProps) => {
                 {/* Product Images: show up to 4 if available */}
                 {Array.isArray(product.images) && product.images.slice(0, 4).map((img, idx) => (
                     <div key={idx} className='flex flex-col items-center lg:h-[750px] h-[550px] relative w-screen justify-between gap-4 mb-10'>
-                        <Image src={img} width={1000} height={1000} className='md:max-w-[750px] max-w-[450px] h-full object-contain' alt={product.title + ' image ' + (idx + 1)} />
+                        <Image src={img} width={1000} height={1000} className='md:max-w-[620px] max-w-[420px] h-full object-contain' alt={product.title + ' image ' + (idx + 1)} />
                     </div>
                 ))}
             </div>

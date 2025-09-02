@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: "Luxury long-lasting perfumes & gifting solutions.",
     url: "https://syaperfume.com",
     siteName: "Sya Perfume",
-    images: ["/SyaLogo.png"],
+    images: ["/sya.png"],
     type: "website",
   },
 };

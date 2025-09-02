@@ -330,7 +330,7 @@ const CartContent = () => {
                 className={`flex-1 py-4 rounded-lg border-2 border-none text-lg font-semibold transition-all duration-150 ${paymentType === 'cod' ? 'bg-[#121212] text-[#faebd7] border-[#121212]' : 'bg-[#f5f5f5] text-[#121212] border-[#121212]'}`}
                 onClick={() => handlePaymentType({ target: { value: 'cod' } } as any)}
               >
-                Cash on Delivery<br/><span className='font-bold text-lg'>₹{product.price + 50}</span>
+                Cash on Delivery<br/><span className='font-bold text-lg'>₹{product.price + 20}</span>
               </button>
               <button
                 type="button"
@@ -353,7 +353,7 @@ const CartContent = () => {
                 </svg>
                 Your Order is Confirmed
               </>
-            ) : loading ? "Processing..." : "Confirm Your Order"}
+            ) : loading ? "Processing... Please wait" : "Confirm Your Order"}
           </button>
           <span className='text-left justify-start text-sm leading-tight tracking-tight'>Place your order for {product.title}. Your details are safe with us. Delivery in Nagpur: 1–4 days. Outside Nagpur: 4–7 days, carefully handled.</span>
         </form>

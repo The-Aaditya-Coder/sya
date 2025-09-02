@@ -1,22 +1,5 @@
 import ParallaxImg from '@/app/parallaxImg'
-import React, { useState } from 'react'
-
-
-const videoMap = {
-  sya: '/video/sya-main.MP4',
-  knight: '/video/knight1.MP4',
-  blushe: '/video/blushe1.MP4',
-  coldmark: '/video/coldmark1.MP4',
-  glow: '/video/glow1.MP4',
-};
-
-const videoPoster = {
-  sya: '/images/SyaLogo.png',
-  knight: '/perfumes/knight3.png',
-  blushe: '/perfumes/blushe3.png',
-  coldmark: '/perfumes/coldmark3.png',
-  glow: '/perfumes/glow3.png',
-};
+import React from 'react'
 
 {/* This is from product------- */}
 import BrownSugar from 'next/font/local'
@@ -28,93 +11,29 @@ const brownSugar = BrownSugar({
 {/* This is from product------- */}
 
 const Hero = () => {
-  const [video, setVideo] = useState(videoMap.sya);
-  const [poster, setPoster] = useState(videoPoster.sya);
-  const [fade, setFade] = useState(false);
-
-  const handleVideoChange = (newVideo: string) => {
-    if (video === newVideo) return;
-    setFade(true);
-    setTimeout(() => {
-      setVideo(newVideo);
-      setFade(false);
-    }, 600); // duration matches fade-out
-  };
-  const handlePosterChange = (newPoster: string) => {
-    if (poster === newPoster) return;
-    setFade(true);
-    setTimeout(() => {
-      setPoster(newPoster);
-      setFade(false);
-    }, 600); // duration matches fade-out
-  };
 
   return (
     <section className="hero">
       <div className="img" style={{ position: 'relative' }}>
-        <ParallaxImg type='video' src={video} poster={poster} alt="" />
-        {/* Black fade overlay */}
-        <div
-          style={{
-            opacity: fade ? 1 : 0,
-            pointerEvents: 'none',
-            transition: 'opacity 0.6s',
-            background: '#121212',
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            zIndex: 2,
-          }}
-        />
+        <ParallaxImg type='video' src='/video/sya-main.MP4' poster='sya.png' alt="" />
       </div>
-
-
-{/* <div className='w-full flex justify-center absolute'>
-  <button
-    onClick={() => {
-      const aboutSection = document.getElementById('about-section');
-      if (aboutSection) {
-        aboutSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }}
-    className='md:bottom-50 bg-[#faebd7] bottom-40 z-20 absolute'
-  >
-    Pre Book Now
-  </button>
-</div> */}
-
-{/* This is from product------- */}
 
       <div className="nav">
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            handleVideoChange(videoMap.knight);
-            handlePosterChange(videoPoster.knight);
-          }}
+          onClick={() => { window.location.href = '/knight'; }}
         >Knight</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            handleVideoChange(videoMap.blushe);
-            handlePosterChange(videoPoster.blushe);
-          }}
+          onClick={() => { window.location.href = '/blushe'; }}
         >Blushé</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            handleVideoChange(videoMap.coldmark);
-            handlePosterChange(videoPoster.coldmark);
-          }}
+          onClick={() => { window.location.href = '/coldmark'; }}
         >Coldmark</p>
         <p
           className="font-playfair-display hover:text-red-500 hover:underline text-antiquewhite transition-all duration-300 cursor-pointer"
-          onClick={() => {
-            handleVideoChange(videoMap.glow);
-            handlePosterChange(videoPoster.glow);
-          }}
+          onClick={() => { window.location.href = '/glow'; }}
         >Glow</p>
       </div>
     </section>

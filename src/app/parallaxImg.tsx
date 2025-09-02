@@ -40,12 +40,12 @@ const ParallaxImg = ({ src, alt = '', poster='', className = '', type = 'image',
                 currentTranslateY.current = lerp(
                     currentTranslateY.current,
                     targetTranslateY.current,
-                    0.1
+                    0.5
                 );
                 if(
-                    Math.abs(currentTranslateY.current - targetTranslateY.current) > 0.1
+                    Math.abs(currentTranslateY.current - targetTranslateY.current) > 0.5
                 ){
-                    (mediaRef.current as any).style.transform = `translateY(${currentTranslateY.current}px) scale(1.40)`;
+                    (mediaRef.current as any).style.transform = `translateY(${currentTranslateY.current}px) scale(1.2)`;
                 }
             }
             refId.current = requestAnimationFrame(animate);
@@ -78,7 +78,7 @@ useLenis(({scroll})=>{
                     alt={alt}
                     style={{
                         willChange: "transform",
-                        transform: `translateY(0) scale(1.25)`
+                        transform: `translateY(0) scale(1.2)`
                     }}
                 />
             )}
@@ -98,8 +98,8 @@ useLenis(({scroll})=>{
                     playsInline
                     style={{
                         willChange: "transform",
-                        transform: `translateY(0) scale(1.25)`
-                        }}
+                        transform: `translateY(0) scale(1.2)`
+                    }}
                 />
             )}
         </>

@@ -109,8 +109,8 @@ button{
 label{
   font-size: 14px;
   font-weight: 400;
-  line-height: 1;
-  text-transform: uppercase;
+  line-height: 1.15;
+  text-transform: capitalize;
   z-index: 2;
 }
 
@@ -146,9 +146,11 @@ section:not(.about){
 
 section.product{
   width: 100vw;
-  height: 125vh;
+  height: 110vh;
   display: flex;
   gap: 10em;
+  border-top: 1px solid antiquewhite;
+  border-bottom: 1px solid antiquewhite;
 }
 
 .product-brief{
